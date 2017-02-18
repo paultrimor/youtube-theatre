@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-
 /* GET home page. */
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -13,8 +12,11 @@ router.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '../views/', 'index.html'));
 });
 
-router.get('/video/:url', function(req, res){
-	res.send(req.params);
+router.get('/video/:url', function (req, res) {
+	var url = req.param('url');
+	res.render('index', {
+		url: url
+	})
 });
 
 router.get('*', function (req, res) {
@@ -22,4 +24,3 @@ router.get('*', function (req, res) {
 });
 
 module.exports = router;
-

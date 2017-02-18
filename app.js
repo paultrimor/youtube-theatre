@@ -3,6 +3,9 @@ var path = require('path');
 var index = require('./routes/index');
 var app = express();
 
+var ejs = require('ejs');
+app.set('view engine', 'ejs');
+
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
