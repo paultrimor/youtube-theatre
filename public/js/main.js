@@ -1,6 +1,10 @@
 var socket = io();
+
+socket.emit('room', url);
+
+
 $('form').submit(function () {
-	socket.emit('chat message', $('#m').val());
+	socket.emit('chat message', $('#m').val(), url);
 	$('#m').val('');
 	return false;
 });
