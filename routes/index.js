@@ -13,6 +13,10 @@ router.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '../views/', 'index.html'));
 });
 
+router.get('/video/:url', function(req, res){
+	res.send(req.params);
+});
+
 router.get('*', function (req, res) {
 	res.sendFile(path.join(__dirname, '../views/', '404.html'));
 });
