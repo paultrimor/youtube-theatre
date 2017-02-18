@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
+
+
 /* GET home page. */
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -16,3 +18,4 @@ router.get('*', function (req, res) {
 });
 
 module.exports = router;
+
