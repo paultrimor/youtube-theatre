@@ -9,10 +9,13 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '../views/', 'index.html'));
+	var url = "Undefined";
+	res.render('index', {
+		url: url
+	})
 });
 
-router.get('/video/:url', function (req, res) {
+router.get('/:url', function (req, res) {
 	var url = req.param('url');
 	res.render('index', {
 		url: url
