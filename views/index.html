@@ -1,57 +1,44 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <style>
-	      * { margin: 0; padding: 0; box-sizing: border-box; }
-	      body { font: 13px Helvetica, Arial; }
-	      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 30%; }
-	      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-	      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-	      #messages { list-style-type: none; margin: 0; padding: 0; }
-	      #messages li { padding: 5px 10px; }
-	      #messages li:nth-child(odd) { background: #eee; }
-	      #messageWrapper {	width: 30%; display: block; float: right;}
-	      #messages > ul{
-	      	overflow: none;
-	      }
-	    </style>
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="messageWrapper">
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <ul id="messages"></ul>
-  		<form action="">
-    	  <input id="m" autocomplete="off" /><button>Send</button>
-  		</form>
-  	</div>
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 
-        <script src="/socket.io/socket.io.js"></script>
-		<script>
-		  var socket = io();
-		   $('form').submit(function(){
-		    socket.emit('chat message', $('#m').val());
-		    $('#m').val('');
-		    return false;
-		  });
+<body>
 
-		   socket.on('chat message', function(msg){
-		   	$('#messages').append($('<li style=" overflow-wrap: word;">').text(msg));
-		   });
-		</script>
+	<div id="messageWrapper">
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="m" autocomplete="off" />
+			<button>Send</button>
+		</form>
+	</div>
 
-    </body>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script>
+		window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+	</script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
 </html>
