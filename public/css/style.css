@@ -17,7 +17,6 @@ form {
 }
 
 form input {
-	border: 0;
 	padding: 10px;
 	width: 100%;
 	margin-right: .5%;
@@ -55,6 +54,8 @@ form button {
 }
 
 #player {
-	margin: 10% 0 0 13%;
+	top: 10%;
+	left: 10%;
+	position: absolute;
 	display: block;
 }
