@@ -17,13 +17,17 @@ app.use('/', index);
 io.on('connection', function (socket) {
 	console.log('A user connected');
 
+	socket.on('room', function (room) {
+		socket.join(room);
+	});
+
 	socket.on('disconnect', function () {
 		console.log('A user disconnected');
 	});
 
-	socket.on('chat message', function (msg) {
-		console.log('Message: ' + msg);
-		io.emit('chat message', msg);
+	socket.on('chat message', function (msg, room) {
+		console.log('Message: ' + msg + " from room: " + room);
+		io.to(room).emit('chat message', msg);
 	});
 
 });
