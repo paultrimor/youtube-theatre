@@ -1,6 +1,6 @@
 var socket = io();
 var prepended = false;
-var startTime = false;
+var time = 0;
 socket.emit('room', url);
 
 $('form').submit(function () {
@@ -14,17 +14,13 @@ socket.on('chat message', function (msg) {
 });
 
 socket.on('sendTime', function () {
-	console.log("Start time: " + startTime);
-	if (startTime != false) {
-		//socket.emit('time', url, startTime);
-		socket.emit('time', url, Math.round(player.getCurrentTime()));
-	}
+	console.log("Sending time: " + Math.round(player.getCurrentTime()));
+	socket.emit('time', url, Math.round(player.getCurrentTime()));
 });
 
-function embedVideo(startTime) {
+function embedVideo() {
 	if (prepended == false) {
 		//var time = Math.round(new Date().getTime() / 1000) - startTime;
-		var time = startTime;
 		console.log("received start time before set youtube: " + time);
 		/*$('body').prepend('<iframe id="video" width="560" height="315" src="//www.youtube.com/embed/' + url + '?start=' + time + '&autoplay=1" allowfullscreen></iframe>')*/
 		var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -35,8 +31,8 @@ function embedVideo(startTime) {
 
 socket.on('time', function (start_time_received) {
 	console.log("Got start time: " + start_time_received);
-	startTime = start_time_received;
-	embedVideo(startTime);
+	time = start_time_received;
+	embedVideo();
 });
 
 socket.on('playerState', function (state) {
@@ -57,9 +53,9 @@ socket.on('playerState', function (state) {
 setTimeout(function () {
 	if (prepended == false) {
 		startTime = Math.round(new Date().getTime() / 1000);
-		embedVideo(startTime)
+		embedVideo()
 	}
-}, 1500);
+}, 3000);
 
 
 
@@ -76,7 +72,7 @@ function onYouTubePlayerAPIReady() {
 		width: video.w,
 		videoId: video,
 		playerVars: {
-			start: (Math.round(new Date().getTime() / 1000) - startTime),
+			start: time,
 			rel: 0,
 			showinfo: 0,
 			autoplay: 1
