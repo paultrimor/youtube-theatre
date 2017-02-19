@@ -39,6 +39,9 @@ io.on('connection', function (socket) {
 		socket.broadcast.to(room).emit('playerState', state);
 	})
 
+	socket.on('changeTime', function (room, time) {
+		socket.broadcast.to(room).emit('changeTime', time);
+	})
 });
 
 http.listen(process.env.PORT || 3000, function () {

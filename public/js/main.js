@@ -47,7 +47,10 @@ socket.on('playerState', function (state) {
 		player.pauseVideo();
 		break;
 	}
+})
 
+socket.on('changeTime', function (time_change) {
+	player.seekTo(time_change);
 })
 
 setTimeout(function () {
@@ -55,7 +58,7 @@ setTimeout(function () {
 		startTime = Math.round(new Date().getTime() / 1000);
 		embedVideo()
 	}
-}, 3000);
+}, 2000);
 
 
 
@@ -82,9 +85,18 @@ function onYouTubePlayerAPIReady() {
 		}
 	});
 };
+var tempTime = time;
 
 function onPlayerStateChange(event) {
 	console.log(event.data);
+	timeInterval = setInterval(function () {
+		tempTime = player.getCurrentTime();
+		if (((tempTime - time) > 2) || ((tempTime - time) < -2)) {
+			socket.emit('changeTime', url, tempTime);
+			console.log("Time changed");
+		}
+		time = tempTime;
+	}, 1000);
 	switch (event.data) {
 	case 1:
 		console.log("Player playing");
@@ -96,6 +108,8 @@ function onPlayerStateChange(event) {
 		break;
 	}
 }
+
+
 
 // Inject YouTube API script
 var tag = document.createElement('script');
