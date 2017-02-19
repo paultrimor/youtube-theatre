@@ -9,7 +9,6 @@ body {
 }
 
 form {
-	background: #000;
 	padding: 3px;
 	position: fixed;
 	bottom: 0;
@@ -18,15 +17,15 @@ form {
 
 form input {
 	padding: 10px;
-	width: 100%;
-	margin-right: .5%;
+	width: 80%;
 }
 
 form button {
-	width: 15%;
-	background: rgb(130, 224, 255);
+	width: 20%;
+	display: block;
+	float: right;
 	border: none;
-	padding: 10px;
+	padding: 11px 10px;
 }
 
 #messages {
