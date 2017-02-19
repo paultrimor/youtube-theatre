@@ -18,6 +18,14 @@ form {
 form input {
 	padding: 10px;
 	width: 80%;
+	font-family: "Titillium Web";
+	transition: all 0.3s ease-in-out 0s;
+	font-size: 1.5em;
+}
+
+form input:focus {
+	border: 2px solid rgb(68, 138, 255);
+	outline: none;
 }
 
 form button {
@@ -26,6 +34,9 @@ form button {
 	float: right;
 	border: none;
 	padding: 11px 10px;
+	font-family: "Titillium Web";
+	font-size: 1.5em;
+	background-color: rgb(68, 138, 255);
 }
 
 #messages {
@@ -36,6 +47,8 @@ form button {
 
 #messages li {
 	padding: 5px 10px;
+	font-family: "Titillium Web";
+	font-size: 1.5em;
 }
 
 #messages li:nth-child(odd) {
