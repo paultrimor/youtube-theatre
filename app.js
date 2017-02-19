@@ -19,6 +19,7 @@ io.on('connection', function (socket) {
 
 	socket.on('room', function (room) {
 		socket.join(room);
+		socket.broadcast.to(room).emit('sendTime');
 	});
 
 	socket.on('disconnect', function () {
@@ -29,6 +30,14 @@ io.on('connection', function (socket) {
 		console.log('Message: ' + msg + " from room: " + room);
 		io.to(room).emit('chat message', msg);
 	});
+
+	socket.on('time', function (room, time) {
+		socket.broadcast.to(room).emit('time', time);
+	})
+
+	socket.on('playerState', function (room, state) {
+		socket.broadcast.to(room).emit('playerState', state);
+	})
 
 });
 

@@ -9,19 +9,14 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function (req, res) {
-	var url = "Undefined";
 
-	res.render('index', {
-		url: url
-	})
-
-
+	res.render('main')
 });
 
 router.get('/:url', function (req, res) {
 	var url = req.param('url');
-	var startTime = 76; 
-	/** Youtube Part **/ 
+	var startTime = 76;
+	/** Youtube Part **/
 
 
 	res.render('index', {
