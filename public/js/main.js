@@ -16,13 +16,15 @@ socket.on('chat message', function (msg) {
 socket.on('sendTime', function () {
 	console.log("Start time: " + startTime);
 	if (startTime != false) {
-		socket.emit('time', url, startTime);
+		//socket.emit('time', url, startTime);
+		socket.emit('time', url, Math.round(player.getCurrentTime()));
 	}
 });
 
 function embedVideo(startTime) {
 	if (prepended == false) {
-		var time = Math.round(new Date().getTime() / 1000) - startTime;
+		//var time = Math.round(new Date().getTime() / 1000) - startTime;
+		var time = startTime;
 		console.log("received start time before set youtube: " + time);
 		/*$('body').prepend('<iframe id="video" width="560" height="315" src="//www.youtube.com/embed/' + url + '?start=' + time + '&autoplay=1" allowfullscreen></iframe>')*/
 		var firstScriptTag = document.getElementsByTagName('script')[0];
